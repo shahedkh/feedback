@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import FeedbackData from "./data/FeedbackData";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
+import {FeedbackProvider} from './context/FeedbackContext'
 
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
@@ -23,14 +24,14 @@ setFeedback([newFeedback,...feedback])
 
 
   return (
-    <>
+    <FeedbackProvider>
       <Header />
       <div className="container">
         <FeedbackForm handleAdd={addFeedback}/>
         <FeedbackStats feedback={feedback}/>
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
       </div>
-    </>
+    </FeedbackProvider>
   );
 }
 
